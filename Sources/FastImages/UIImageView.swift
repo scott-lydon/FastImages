@@ -15,7 +15,8 @@ public extension UIImageView {
     
     func setImage(
         url: String,
-        placeholderImage: UIImage? = nil
+        placeholderImage: UIImage? = nil,
+        backgroundColor: UIColor = .gray
     ) {
         let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
         Self.urlStore.setObject(url as NSString, forKey: tmpAddress as NSString)
@@ -25,7 +26,7 @@ public extension UIImageView {
         } else if let image = placeholderImage {
             self.image = image
         } else {
-            self.backgroundColor = .gray
+            self.backgroundColor = backgroundColor
         }
         url.url?.request?.callPersistData(fetchStrategy: .alwaysUseCacheIfAvailable) {
             [weak self] data in

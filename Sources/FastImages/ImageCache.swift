@@ -10,7 +10,7 @@ import UIKit
 /// A wrapper to enforce one instance of a thread safe image cache.
 public class ImageChache {
     private init() {}
-    static let shared: ImageChache = .init()
+    static public let shared: ImageChache = .init()
     private var nsCache: NSCache<NSURLRequest, UIImage> = .init()
     public var cacheSize: Int = 100 {
         didSet {
